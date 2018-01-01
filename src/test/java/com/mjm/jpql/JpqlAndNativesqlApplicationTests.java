@@ -56,6 +56,12 @@ public class JpqlAndNativesqlApplicationTests {
 	}
 
 	@Test
+	public void testFindAllStudentsNativeQuery(){
+		List<Student> s = repository.findAllStudentsNativeQuery();
+		System.out.println(s);
+	}
+
+	@Test
 	public void testFindAllStudentsPartialData(){
 		List<Object[]> l = repository.findAllStudentsPartialData();
 		for (Object[] o : l) {
@@ -66,6 +72,12 @@ public class JpqlAndNativesqlApplicationTests {
 	@Test
 	public void testFindAllStudentsByFirstname(){
 		List<Student> s = repository.findAllStudentsByFirstName("Mark");
+		System.out.println(s);
+	}
+
+	@Test
+	public void testFindAllStudentsByFirstnameNativeQuery(){
+		List<Student> s = repository.findAllStudentsByFirstNameNativeQuery("Jimmy");
 		System.out.println(s);
 	}
 

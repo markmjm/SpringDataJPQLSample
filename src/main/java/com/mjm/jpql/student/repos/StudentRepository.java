@@ -18,11 +18,18 @@ public interface StudentRepository extends CrudRepository<Student, Integer>{
     @Query("select s from Student s")
     Page<Student> findAllStudents(Pageable pageable);
 
+
+    @Query(value="select * from student", nativeQuery=true)
+    List<Student> findAllStudentsNativeQuery();
+
     @Query("select s.firstName, s.lastName from Student s")
     List<Object[]> findAllStudentsPartialData();
 
     @Query("select s from Student s where s.firstName=:firstName")
     List<Student> findAllStudentsByFirstName(@Param("firstName") String firstName);
+
+    @Query(value = "select * from Student s where s.fname=:fname", nativeQuery = true)
+    List<Student> findAllStudentsByFirstNameNativeQuery(@Param("fname") String fname);
 
     @Query("select s from Student s where s.score between :lscore and :hscore")
     List<Student> findAllStudentsByScore(@Param("lscore") Integer lscore,
